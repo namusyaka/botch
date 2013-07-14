@@ -29,6 +29,7 @@ end
 - RSpec
 - GET/POST method
 - Documentation
+- Classic style
 
 ## Contributing to Botch
 
