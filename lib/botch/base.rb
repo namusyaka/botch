@@ -87,7 +87,6 @@ module Botch
     class << self
       @@routes = { :filter => Filter.new, :rule => Rule.new }
 
-      #attr_accessor :client
       attr_reader :client
 
       def instance
