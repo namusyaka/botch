@@ -4,6 +4,16 @@ Botch is a simple DSL for quickly creating web crawlers.
 
 Inspired by Sinatra.
 
+## Installation
+
+add this line to your Gemfile.
+
+`gem 'botch'`
+
+or
+
+`$ gem install botch`
+
 ## Usage
 
 ```ruby
