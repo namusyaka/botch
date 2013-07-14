@@ -47,5 +47,21 @@ module Botch
         expect(SampleBotch.client).to be_an_instance_of(Botch::Client::MechanizeClient)
       end
     end
+
+    describe "instance variable" do
+      before(:all) do
+        class SampleBotch < Botch::Base
+          set :user_agent, "SampleBotch User-Agent"
+          set :disabled_invalid, false
+
+          filter(:all) { @test = "test" }
+          rule(:all) { @test }
+        end
+      end
+
+      it "should be able to use instance variable." do
+        expect(SampleBotch.run(@fake.url)[0]).to eq("test")
+      end
+    end
   end
 end
