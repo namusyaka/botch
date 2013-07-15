@@ -164,6 +164,7 @@ module Botch
                                  :status => response[:status])
 
           response = response[:response]
+          valid    = true
 
           unless filters.empty?
             valid = filters.map{ |_filter| _filter[:block].call(response) }.all?
