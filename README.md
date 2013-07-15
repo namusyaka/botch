@@ -42,7 +42,6 @@ end
 ## TODO
 
 - RSpec
-- GET/POST method
 - Documentation
 - Classic style
 
