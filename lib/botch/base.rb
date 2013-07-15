@@ -134,24 +134,29 @@ module Botch
         unbound_method
       end
 
+      def generate_main_block(&block)
+        unbound_method = generate_method(:main_unbound_method, &block).bind(instance)
+        case unbound_method.arity
+        when 2 then proc{|r,v| unbound_method.call(r,v) }
+        when 1 then proc{|r,v| unbound_method.call(r) }
+        else        proc{|r,v| unbound_method.call }
+        end
+      end
+
       def reset!
         settings = {}
       end
 
-      def run(*urls, &block)
-        if block_given?
-          unbound_method = generate_method(:main_unbound_method, &block).bind(instance)
-          block = case unbound_method.arity
-                  when 2 then proc{|r,v| unbound_method.call(r, v) }
-                  when 1 then proc{|r,v| unbound_method.call(r) }
-                  else        proc{|r,v| unbound_method.call }
-                  end
-        end
+      def request(method, *urls, &block)
+
         set_default_options! unless self.client
+        raise ArgumentError  unless self.client.respond_to?(method)
+
+        block = generate_main_block(&block) if block_given?
 
         urls.map do |url|
           filters, rules = @@routes.map{ |k, v| v.inject(url) }
-          response = self.client.get(url, options)
+          response = self.client.send(method, url, options)
 
           set_instance_variables(:header => response[:header],
                                  :body   => response[:body],
@@ -173,6 +178,11 @@ module Botch
           response
         end
       end
+
+      def get(*urls, &block); request(:get, *urls, &block); end
+      def post(*urls, &block); request(:post, *urls, &block); end
+
+      alias :run :get
 
       def client=(name)
         @client = Client.const_get("#{name.to_s.capitalize}Client").new(settings) if clients.include?(name)

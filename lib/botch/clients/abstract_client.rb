@@ -10,6 +10,9 @@ module Botch
       def get(url, options = {})
         # return a response object
       end
+
+      def post(url, options = {})
+      end
     end
   end
 end

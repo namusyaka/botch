@@ -9,9 +9,15 @@ module Botch
         end
       end
 
-      def get(url, options)
+      def get(url, options = {})
         options.each_pair{ |key, value| @handler.headers[key] = value }
         response = @handler.get(url)
+        parse_response(response)
+      end
+
+      def post(url, options = {})
+        options.each_pair{ |key, value| @handler.headers[key] = value }
+        response = @handler.post(url)
         parse_response(response)
       end
 
