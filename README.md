@@ -4,6 +4,8 @@ Botch is a simple DSL for quickly creating web crawlers.
 
 Inspired by Sinatra.
 
+[Japanese](https://gist.github.com/namusyaka/6001467)
+
 ## Installation
 
 add this line to your Gemfile.
