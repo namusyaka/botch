@@ -53,5 +53,19 @@ module Botch
       expect(result[1]).to be_false
       expect(result[2]).to be_false
     end
+
+    it 'shoud be able to use get method.' do
+      result = SampleBotch.get(*@fakes.map(&:url)){ |response, valid| valid }
+      expect(result[0]).to be_true
+      expect(result[1]).to be_false
+      expect(result[2]).to be_false
+    end
+
+    it 'shoud be able to use post method.' do
+      result = SampleBotch.run(*@fakes.map(&:url)){ |response, valid| valid }
+      expect(result[0]).to be_true
+      expect(result[1]).to be_false
+      expect(result[2]).to be_false
+    end
   end
 end

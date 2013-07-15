@@ -34,6 +34,7 @@ module Botch
     def add_to_fakeweb
       options = { :body => @body, :content_type => @content_type, :status => @status }
       FakeWeb.register_uri(:get, url, options)
+      FakeWeb.register_uri(:post, url, options)
     end
   end
 end
