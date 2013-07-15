@@ -3,10 +3,10 @@ require 'faraday'
 require 'mechanize'
 
 %w(
-  clients/abstract_client
-  clients/faraday_client
-  clients/mechanize_client
-).each{ |path| require File.expand_path("../#{path}", __FILE__)  }
+  abstract
+  faraday
+  mechanize
+).each{ |path| require File.expand_path("../clients/#{path}_client", __FILE__)  }
 
 module Botch
   class Route
