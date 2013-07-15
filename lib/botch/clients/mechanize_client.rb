@@ -1,3 +1,5 @@
+require 'uri'
+
 module Botch
   module Client
     class MechanizeResponseError
