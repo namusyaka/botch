@@ -8,6 +8,7 @@ Gem::Specification.new "botch", Botch::VERSION do |s|
   s.homepage         = "https://github.com/namusyaka/botch"
   s.files            = `git ls-files`.split("\n") - %w(.gitignore)
   s.test_files       = s.files.select { |path| path =~ /^spec\/.*_spec\.rb/ }
+  s.license          = "MIT"
 
   s.add_dependency "faraday"
   s.add_dependency "mechanize"
