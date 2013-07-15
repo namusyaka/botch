@@ -23,12 +23,17 @@ require 'kconv'
 class SampleBotch < Botch::Base
   set :user_agent, "SampleBotch"
 
-  filter(:all) { status == 200 }
-  rule(:all) { |response| body.toutf8 }
+  filter :example, :map => "example.com" do
+    status == 200
+  end
+
+  rule :example, :map => /example\.com/ do
+    body.toutf8
+  end
 end
 
 if $0 == __FILE__
-  SampleBotch.run("http://namusyaka.info/") do |response|
+  SampleBotch.run("http://example.com/") do |response|
     puts response
   end
 end
