@@ -164,9 +164,9 @@ module Botch
           filters, rules = @@routes.map{ |k, v| v.inject(url) }
           response = self.client.send(method, url, options)
 
-          set_instance_variables(:header => response[:header],
+          set_instance_variables :header => response[:header],
                                  :body   => response[:body],
-                                 :status => response[:status])
+                                 :status => response[:status]
 
           response = response[:response]
           valid    = true
