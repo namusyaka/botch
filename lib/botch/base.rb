@@ -144,7 +144,12 @@ module Botch
         end
       end
 
+      def reset
+        @@routes = { :filter => Filter.new, :rule => Rule.new }
+      end
+
       def reset!
+        reset
         settings = {}
       end
 
