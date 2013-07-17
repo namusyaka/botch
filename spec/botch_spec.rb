@@ -43,7 +43,7 @@ module Botch
         expect(@settings[:disabled_invalid]).to be_true
       end
 
-      it "Client setter should be valid." do
+      it "client should be a Client::Mechanize instance." do
         expect(SampleBotch.client).to be_an_instance_of(Botch::Client::MechanizeClient)
       end
     end
