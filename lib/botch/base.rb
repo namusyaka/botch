@@ -14,7 +14,6 @@ module Botch
 
     def initialize
       @routes = []
-      self
     end
 
     def add(label, options = {}, &block)
