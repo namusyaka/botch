@@ -53,11 +53,11 @@ module Botch
     private
 
     def map_validation(url, map)
-      case map.class.to_s
-      when "Regexp"   then url =~ map
-      when "String"   then url.include?(map)
-      when "NilClass" then true
-      else                 nil
+      case map
+      when Regexp   then url =~ map
+      when String   then url.include?(map)
+      when NilClass then true
+      else               nil
       end
     end
   end
