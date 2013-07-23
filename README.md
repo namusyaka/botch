@@ -1,5 +1,7 @@
 # Botch
 
+[![Build Status](https://travis-ci.org/namusyaka/botch.png)](https://travis-ci.org/namusyaka/botch)
+
 Botch is a simple DSL for quickly creating web crawlers.
 
 Inspired by Sinatra.
