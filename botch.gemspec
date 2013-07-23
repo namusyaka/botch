@@ -1,4 +1,4 @@
-require File.expand_path("../lib/botch", __FILE__)
+require File.expand_path("../lib/botch/version", __FILE__)
 
 Gem::Specification.new "botch", Botch::VERSION do |s|
   s.description      = "Botch is a DSL for quickly creating web crawlers. Inspired by Sinatra."

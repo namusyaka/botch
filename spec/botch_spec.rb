@@ -2,12 +2,6 @@ $:.unshift(File.dirname(__FILE__))
 require 'spec_helper'
 
 module Botch
-  describe do
-    it "Should have a version." do
-      expect(Botch.const_defined?("VERSION")).to be_true
-    end
-  end
-
   describe Base do
     before(:all) do
       @fake = Fake.new
