@@ -12,6 +12,7 @@ Gem::Specification.new "botch", Botch::VERSION do |s|
 
   s.add_dependency "faraday"
   s.add_dependency "mechanize"
+  s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
   s.add_development_dependency "fakeweb", ["~> 1.3"]
 end
