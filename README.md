@@ -21,16 +21,23 @@ or
 ```ruby
 require 'lib/botch'
 require 'kconv'
+require 'rack'
 
 class SampleBotch < Botch::Base
   set :user_agent, "SampleBotch"
+
+  helpers do
+    def h(str)
+      Rack::Utils.escape_html(str)
+    end
+  end
 
   filter :example, :map => "example.com" do
     status == 200
   end
 
   rule :example, :map => /example\.com/ do
-    body.toutf8
+    h(body.toutf8)
   end
 end
 
