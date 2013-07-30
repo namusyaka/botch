@@ -57,5 +57,17 @@ module Botch
         expect(SampleBotch.run(@fake.url)[0]).to eq("test")
       end
     end
+
+    describe "helper methods" do
+      before(:all) do
+        class SampleBotch < Botch::Base
+          rule(:all) { url }
+        end
+      end
+
+      it "should be able to use instance variable." do
+        expect(SampleBotch.run(@fake.url)[0]).to eq("http://example.com/")
+      end
+    end
   end
 end
