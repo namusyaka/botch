@@ -65,7 +65,7 @@ module Botch
   %w( Filter Rule ).each { |klass| Object.const_set(klass, Class.new(Route)) }
 
   class Base
-    DEFAULT_INSTANCE_VARIABLES = { :header => nil, :body => nil, :status => nil }
+    DEFAULT_INSTANCE_VARIABLES = { :header => nil, :body => nil, :status => nil, :url => nil }
     attr_reader(*DEFAULT_INSTANCE_VARIABLES.keys)
 
     def initialize
@@ -165,7 +165,8 @@ module Botch
 
           set_instance_variables :header => response[:header],
                                  :body   => response[:body],
-                                 :status => response[:status]
+                                 :status => response[:status],
+                                 :url    => url
 
           response = response[:response]
           valid    = true
