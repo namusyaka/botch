@@ -122,9 +122,9 @@ module Botch
         route(:rule, label, options, &block)
       end
 
-      def generate_wrapper(&method)
-        method.arity != 0 ? proc {|args| method.call(*args) } :
-                            proc {|args| method.call }
+      def generate_wrapper(&block)
+        block.arity != 0 ? proc {|args| block.call(*args) } :
+                           proc {|args| block.call }
       end
 
       def generate_method(method_name, &block)
