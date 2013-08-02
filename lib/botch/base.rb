@@ -153,8 +153,7 @@ module Botch
       end
 
       def request(method, *urls, &block)
-
-        set_default_options unless self.client
+        set_default_options  unless self.client
         raise ArgumentError  unless self.client.respond_to?(method)
 
         block = generate_main_block(&block) if block_given?
