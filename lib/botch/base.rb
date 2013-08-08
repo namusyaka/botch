@@ -33,7 +33,7 @@ module Botch
     end
 
     def exist?(label)
-      @routes.find{ |route| route[:label] == label  }
+      @routes.find{ |route| route[:label] == label }
     end
 
     alias exists? exist?
@@ -183,7 +183,7 @@ module Botch
       def get(*urls, &block); request(:get, *urls, &block); end
       def post(*urls, &block); request(:post, *urls, &block); end
 
-      alias :run :get
+      alias run get
 
       def client=(name)
         @client = Client.const_get("#{name.to_s.capitalize}Client").new(settings) if clients.include?(name)
