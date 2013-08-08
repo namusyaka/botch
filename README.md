@@ -54,7 +54,6 @@ end
 
 - RSpec
 - Documentation
-- Classic style
 
 ## Contributing to Botch
 
