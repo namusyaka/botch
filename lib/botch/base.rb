@@ -18,8 +18,7 @@ module Botch
 
     def add(label, options = {}, &block)
       raise ArgumentError unless block_given?
-      if position = index(label)
-        route = @routes[position]
+      if route = exists?(label)
         route[:block] = block
         route[:label] = label
       else
@@ -34,14 +33,10 @@ module Botch
     end
 
     def exist?(label)
-      !!index(label)
+      @routes.find{ |route| route[:label] == label  }
     end
 
-    alias :exists? :exist?
-
-    def index(label)
-      @routes.index{ |route| route[:label] === label }
-    end
+    alias exists? exist?
 
     def inject(url)
       @routes.inject([]) do |result, route|
